@@ -135,3 +135,11 @@ head(mpg_long)
 plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type))
 #add box plot with labels rotated 45 degrees
 plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1))
+
+?facet_wrap()
+# facet our previous example by the fuel-efficiency type
+#import data set into ggplot2
+plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type))
+#create multiple box plots, one for each MPG type
+  #rotate x-axis labels
+plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + theme(axis.text.x=element_text(angle=45,hjust=1),legend.position = "none") + xlab("Manufacturer")
