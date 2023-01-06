@@ -63,3 +63,14 @@ plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", c
   # This adds type of drive-train and their own individual shapes
 plt <- ggplot(mpg,aes(x=displ,y=cty,color=class,shape=drv))
 plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class",shape="Type of Drive")
+
+# 16.3.3 Skill drill 1/1
+# Skipped
+
+# 16.3.5 Create advanced box plots in ggplot2
+
+# Generate a box plot to visualize the highway fuel efficiency of our mpg data set
+# Import data set into ggplot2
+plt <- ggplot(mpg,aes(y=hwy))
+# Add box plot
+plt + geom_boxplot()
