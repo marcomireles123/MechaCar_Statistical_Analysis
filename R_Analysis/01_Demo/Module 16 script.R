@@ -253,4 +253,24 @@ cor(used_cars$Miles_Driven,used_cars$Selling_Price)
 # convert data frame into numeric matrix
 used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")])
 cor(used_matrix)
-  
+
+# 16.7.2 Return to Linear Regression
+?lm()
+
+#create linear model
+lm(qsec ~ hp,mtcars)
+
+#summarize linear model
+summary(lm(qsec~hp,mtcars))
+
+#create linear model
+model <- lm(qsec ~ hp,mtcars)
+
+#determine y-axis values from linear model
+yvals <- model$coefficients['hp']*mtcars$hp + model$coefficients['(Intercept)']
+
+#import dataset into ggplot2
+plt <- ggplot(mtcars,aes(x=hp,y=qsec))
+
+#plot scatter and linear model
+plt + geom_point() + geom_line(aes(y=yvals), color = "red")
