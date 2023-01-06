@@ -110,3 +110,10 @@ plt <- ggplot(mpg,aes(x=manufacturer,y=hwy))
   #rotate x-axis labels 45 degrees
     #overlay scatter plot on top
 plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) + geom_point()
+
+#create summary table
+mpg_summary <- mpg %>% group_by(class) %>% summarize(Mean_Engine=mean(displ), .groups = 'keep')
+#import data set into ggplot2
+plt <- ggplot(mpg_summary,aes(x=class,y=Mean_Engine))
+#add scatter plot
+plt + geom_point(size=4) + labs(x="Vehicle Class",y="Mean Engine Size")
