@@ -53,3 +53,13 @@ plt <- ggplot(mpg,aes(x=displ,y=cty))
 
 #add scatter plot with labels
 plt + geom_point() + xlab("Engine Size (L)") + ylab("City Fuel-Efficiency (MPG)")
+
+#add scatter plot with labels
+  # This adds vehicle classes and gives them an individual color
+plt <- ggplot(mpg,aes(x=displ,y=cty,color=class))
+plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class")
+
+#add scatter plot with multiple aesthetics
+  # This adds type of drive-train and their own individual shapes
+plt <- ggplot(mpg,aes(x=displ,y=cty,color=class,shape=drv))
+plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class",shape="Type of Drive")
