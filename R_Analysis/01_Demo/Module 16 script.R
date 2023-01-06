@@ -101,5 +101,12 @@ plt <- ggplot(mpg_summary, aes(x=model,y=factor(year),fill=Mean_Hwy))
 # Add heat map with labels
   # Rotate x-axis labels 90 degrees with '+ theme'
 plt + geom_tile() + labs(x="Model",y="Vehicle Year",fill="Mean Highway (MPG)") + theme(axis.text.x = element_text(angle=90,hjust=1,vjust=.5))
- 
-  
+
+# 16.3.7 Add layers to plots
+
+#import data set into ggplot2
+plt <- ggplot(mpg,aes(x=manufacturer,y=hwy))
+#add box plot
+  #rotate x-axis labels 45 degrees
+    #overlay scatter plot on top
+plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) + geom_point()
