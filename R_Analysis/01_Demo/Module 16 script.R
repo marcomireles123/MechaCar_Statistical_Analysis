@@ -207,3 +207,50 @@ mpg_2008 <- mpg_data %>% filter(year==2008)
 
 # compare the mean difference between two samples
 t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T)
+
+# 16.6.5 Use the ANOVA Test
+
+?aov()
+
+# Filter columns from mtcars data set
+mtcars_filt <- mtcars[,c("hp","cyl")]
+
+# Convert numeric column to factor
+mtcars_filt$cyl <- factor(mtcars_filt$cyl)
+
+# Compare means across multiple levels
+aov(hp ~ cyl,data=mtcars_filt)
+
+summary(aov(hp ~ cyl,data=mtcars_filt))
+
+# 16.7.1 The Correlation Conundrum
+?cor()
+head(mtcars)
+
+#import data set into ggplot2
+plt <- ggplot(mtcars,aes(x=hp,y=qsec))
+
+#create scatter plot
+plt + geom_point()
+
+#calculate correlation coefficient
+cor(mtcars$hp,mtcars$qsec)
+
+# Read in data set
+used_cars <- read.csv('used_car_data.csv',stringsAsFactors = F)
+
+head(used_cars)
+
+# Import data set into ggplot2
+plt <- ggplot(used_cars,aes(x=Miles_Driven,y=Selling_Price))
+
+# Create a scatter plot
+plt + geom_point()
+
+# Calculate correlation coefficient
+cor(used_cars$Miles_Driven,used_cars$Selling_Price)
+
+# convert data frame into numeric matrix
+used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")])
+cor(used_matrix)
+  
