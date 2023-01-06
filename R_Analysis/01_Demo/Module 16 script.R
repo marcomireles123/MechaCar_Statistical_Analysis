@@ -143,3 +143,8 @@ plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type))
 #create multiple box plots, one for each MPG type
   #rotate x-axis labels
 plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + theme(axis.text.x=element_text(angle=45,hjust=1),legend.position = "none") + xlab("Manufacturer")
+
+# 16.4.4 Test for normality
+
+# Visualize distribution using density plot
+ggplot(mtcars,aes(x=wt)) + geom_density()
