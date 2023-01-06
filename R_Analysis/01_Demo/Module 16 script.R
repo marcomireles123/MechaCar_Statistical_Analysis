@@ -154,3 +154,24 @@ shapiro.test(mtcars$wt)
 
 # 16.6.1 Sample versus population
 ?sample_n()
+
+# Visualize the distribution of driven miles for our entire population data set
+
+#import used car data set
+setwd("C:/Users/Marco/Desktop/Boot_Camp/Module 16/MechaCar_Statistical_Analysis/R_Analysis/01_Demo")
+population_table <- read.csv('used_car_data.csv',check.names = F,stringsAsFactors = F)
+
+#import data set into ggplot2
+plt <- ggplot(population_table,aes(x=log10(Miles_Driven)))
+
+#visualize distribution using density plot
+plt + geom_density()
+
+#randomly sample 50 data points
+sample_table <- population_table %>% sample_n(50)
+
+#import data set into ggplot2
+plt <- ggplot(sample_table,aes(x=log10(Miles_Driven)))
+
+#visualize distribution using density plot
+plt + geom_density()
