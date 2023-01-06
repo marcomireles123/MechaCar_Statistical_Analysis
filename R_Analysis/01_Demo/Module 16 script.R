@@ -282,3 +282,15 @@ lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)
 
 #generate summary statistics
 summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars))
+
+# 16.8.1 Category Complexities
+?chisq.test()
+
+#generate contingency table
+table(mpg$class,mpg$year)
+
+#generate contingency table
+tbl <- table(mpg$class,mpg$year)
+
+#compare categorical distributions
+chisq.test(tbl)
