@@ -117,3 +117,21 @@ mpg_summary <- mpg %>% group_by(class) %>% summarize(Mean_Engine=mean(displ), .g
 plt <- ggplot(mpg_summary,aes(x=class,y=Mean_Engine))
 #add scatter plot
 plt + geom_point(size=4) + labs(x="Vehicle Class",y="Mean Engine Size")
+
+# Layer the upper and lower standard deviation boundaries to our visualization using the geom_errorbar() function
+mpg_summary <- mpg %>% group_by(class) %>% summarize(Mean_Engine=mean(displ),SD_Engine=sd(displ), .groups = 'keep')
+#import data set into ggplot2
+plt <- ggplot(mpg_summary,aes(x=class,y=Mean_Engine))
+#add scatter plot with labels
+  #overlay with error bars
+plt + geom_point(size=4) + labs(x="Vehicle Class",y="Mean Engine Size") + geom_errorbar(aes(ymin=Mean_Engine-SD_Engine,ymax=Mean_Engine+SD_Engine))
+
+#convert to long format
+mpg_long <- mpg %>% gather(key="MPG_Type",value="Rating",c(cty,hwy))
+head(mpg_long)
+
+# Visualize the different vehicle fuel efficiency ratings by manufacturer
+#import data set into ggplot2
+plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type))
+#add box plot with labels rotated 45 degrees
+plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1))
