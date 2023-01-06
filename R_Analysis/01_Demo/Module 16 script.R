@@ -5,3 +5,5 @@ long_table <- gather(demo_table3,key="Metric",value="Score",buying_price:popular
 wide_table <- long_table %>% spread(key="Metric",value="Score")
 
 # 16.3.1 Introduction to ggplot2
+?ggplot()
+  
