@@ -83,3 +83,23 @@ plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1))
 
 # 16.3.5 Skill drill 1/1
   # Skipped
+
+# 16.3.6 Create heat map plots
+
+#create summary table
+mpg_summary <- mpg %>% group_by(class,year) %>% summarize(Mean_Hwy=mean(hwy), .groups = 'keep')
+plt <- ggplot(mpg_summary, aes(x=class,y=factor(year),fill=Mean_Hwy))
+
+#create heat map with labels
+plt + geom_tile() + labs(x="Vehicle Class",y="Vehicle Year",fill="Mean Highway (MPG)")
+
+# look at the difference in average highway fuel efficiency across each vehicle model from 1999 to 2008
+#create summary table
+mpg_summary <- mpg %>% group_by(model,year) %>% summarize(Mean_Hwy=mean(hwy), .groups = 'keep')
+#import data set into ggplot2
+plt <- ggplot(mpg_summary, aes(x=model,y=factor(year),fill=Mean_Hwy))
+# Add heat map with labels
+  # Rotate x-axis labels 90 degrees with '+ theme'
+plt + geom_tile() + labs(x="Model",y="Vehicle Year",fill="Mean Highway (MPG)") + theme(axis.text.x = element_text(angle=90,hjust=1,vjust=.5))
+ 
+  
