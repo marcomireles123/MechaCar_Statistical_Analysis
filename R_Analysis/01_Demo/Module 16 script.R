@@ -175,3 +175,35 @@ plt <- ggplot(sample_table,aes(x=log10(Miles_Driven)))
 
 #visualize distribution using density plot
 plt + geom_density()
+
+# 16.6.2 Use the One-Sample t-Test
+
+?t.test()
+
+#compare sample versus population means
+t.test(log10(sample_table$Miles_Driven),mu=mean(log10(population_table$Miles_Driven)))
+
+# 16.6.3 Use the Two-Sample t-Test
+
+#generate 50 randomly sampled data points
+sample_table <- population_table %>% sample_n(50)
+
+#generate another 50 randomly sampled data points
+sample_table2 <- population_table %>% sample_n(50)
+
+#compare means of two samples
+t.test(log10(sample_table$Miles_Driven),log10(sample_table2$Miles_Driven))
+
+# 16.6.4 Use the Two-Sample t-Test to Compare Samples
+
+#import dataset
+mpg_data <- read.csv('mpg_modified.csv')
+
+# select only data points where the year is 1999
+mpg_1999 <- mpg_data %>% filter(year==1999)
+
+#select only data points where the year is 2008
+mpg_2008 <- mpg_data %>% filter(year==2008)
+
+# compare the mean difference between two samples
+t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T)
