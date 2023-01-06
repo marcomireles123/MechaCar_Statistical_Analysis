@@ -64,8 +64,8 @@ plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", c
 plt <- ggplot(mpg,aes(x=displ,y=cty,color=class,shape=drv))
 plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class",shape="Type of Drive")
 
-# 16.3.3 Skill drill 1/1
-# Skipped
+# 16.3.4 Skill drill 1/1
+  # Skipped
 
 # 16.3.5 Create advanced box plots in ggplot2
 
@@ -74,3 +74,12 @@ plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", c
 plt <- ggplot(mpg,aes(y=hwy))
 # Add box plot
 plt + geom_boxplot()
+
+# Create a set of box plots that compares highway fuel efficiency for each car manufacturer
+# import data set into ggplot2
+plt <- ggplot(mpg,aes(x=manufacturer,y=hwy))
+# add box plot and rotate x-axis labels 45 degrees
+plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1))
+
+# 16.3.5 Skill drill 1/1
+  # Skipped
