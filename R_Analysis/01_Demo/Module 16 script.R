@@ -294,3 +294,5 @@ tbl <- table(mpg$class,mpg$year)
 
 #compare categorical distributions
 chisq.test(tbl)
+
+# 16.9.1 Practice A/B Testing
