@@ -32,3 +32,24 @@ plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in D
 
 #rotate the x-axis label 45 degrees
 plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in Dataset") + theme(axis.text.x=element_text(angle=45,hjust=1))
+
+# 16.3.4 Build a line plot in ggplot2
+
+#create summary table
+mpg_summary <- subset(mpg,manufacturer=="toyota") %>% group_by(cyl) %>% summarize(Mean_Hwy=mean(hwy), .groups = 'keep')
+
+#import data set into ggplot2
+plt <- ggplot(mpg_summary,aes(x=cyl,y=Mean_Hwy))
+
+# Generate line plot using geom_line()
+plt + geom_line()
+
+#add line plot with labels
+  # Ignore the warning about continuous limits
+plt + geom_line() + scale_x_discrete(limits=c(4,6,8)) + scale_y_continuous(breaks = c(16:30))
+
+# import data set into ggplot2
+plt <- ggplot(mpg,aes(x=displ,y=cty))
+
+#add scatter plot with labels
+plt + geom_point() + xlab("Engine Size (L)") + ylab("City Fuel-Efficiency (MPG)")
