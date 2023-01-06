@@ -274,3 +274,11 @@ plt <- ggplot(mtcars,aes(x=hp,y=qsec))
 
 #plot scatter and linear model
 plt + geom_point() + geom_line(aes(y=yvals), color = "red")
+
+# 16.7.3 Perform Multiple Linear Regression
+
+#generate multiple linear regression model
+lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)
+
+#generate summary statistics
+summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars))
