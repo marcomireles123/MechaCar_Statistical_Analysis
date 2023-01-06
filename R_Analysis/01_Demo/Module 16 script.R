@@ -30,3 +30,5 @@ plt + geom_col()
 #plot bar plot with labels
 plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in Dataset") 
 
+#rotate the x-axis label 45 degrees
+plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in Dataset") + theme(axis.text.x=element_text(angle=45,hjust=1))
