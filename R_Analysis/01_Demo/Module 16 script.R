@@ -148,3 +148,9 @@ plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + theme(axis.text.x=element_te
 
 # Visualize distribution using density plot
 ggplot(mtcars,aes(x=wt)) + geom_density()
+
+?shapiro.test()
+shapiro.test(mtcars$wt)
+
+# 16.6.1 Sample versus population
+?sample_n()
