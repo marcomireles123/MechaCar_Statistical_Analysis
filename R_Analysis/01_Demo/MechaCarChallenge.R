@@ -1,4 +1,4 @@
-# Deliverable 1 Linear Regression to Predict MPG
+### Deliverable 1 Linear Regression to Predict MPG ###
 
 # Use the library() function to load the dplyr package
 library(dplyr)
@@ -12,7 +12,7 @@ lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AW
 # Using the summary() function, determine the p-value and the r-squared value for the linear regression model.
 summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD ,data=MechaCar_mpg))
 
-# Part 2: Create Visualizations for the Trip Analysis
+### Part 2: Create Visualizations for the Trip Analysis ###
 
 # In your MechaCarChallenge.RScript, import and read in the Suspension_Coil.csv file as a table.
 Suspension_Coil <- read.csv(file='Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
@@ -22,3 +22,13 @@ total_summary <- Suspension_Coil %>% summarize(Mean = mean(PSI), Median = median
 
 # Write an RScript that creates a lot_summary dataframe using the group_by() and the summarize() functions to group each manufacturing lot by the mean, median, variance, and standard deviation of the suspension coil’s PSI column.
 lot_summary <- Suspension_Coil %>% group_by(Manufacturing_Lot) %>% summarize(Mean = mean(PSI),Median = median(PSI), Variance = var(PSI), SD = sd(PSI) , .groups = 'keep') 
+
+### Part 3: T-Tests on Suspension Coils ###
+
+# Step 1
+t.test(Suspension_Coil$PSI,mu=mean(Suspension_Coil$PSI))
+
+# Step 2
+t.test(subset(Suspension_Coil$PSI,Suspension_Coil$Manufacturing_Lot == "Lot1"),mu=mean(Suspension_Coil$PSI))
+t.test(subset(Suspension_Coil$PSI,Suspension_Coil$Manufacturing_Lot == "Lot2"),mu=mean(Suspension_Coil$PSI))
+t.test(subset(Suspension_Coil$PSI,Suspension_Coil$Manufacturing_Lot == "Lot3"),mu=mean(Suspension_Coil$PSI))
